@@ -46,9 +46,9 @@ const EmiCalculator: React.FC = () => {
   const totalMonths = parseFloat(tenureYears || '0') * 12 + parseFloat(tenureMonths || '0');
 
   const seo = {
-    title: 'EMI Calculator with Amortization Table - Calculate Loan EMI Online | QuicknCalc',
-    description: 'Calculate your loan EMI (Equated Monthly Installment) with detailed amortization schedule. Free EMI calculator for home loans, personal loans, car loans with charts and tables.',
-    keywords: 'EMI calculator, loan EMI, equated monthly installment, amortization table, home loan EMI, personal loan calculator, car loan EMI, mortgage calculator',
+    title: 'EMI Calculator with Amortization Table & Charts - Calculate Loan EMI Online | QuicknCalc',
+    description: 'Calculate your loan EMI (Equated Monthly Installment) with detailed amortization schedule and interactive charts. Free EMI calculator for home loans, personal loans, car loans with year-by-year breakdown tables.',
+    keywords: 'EMI calculator, loan EMI, equated monthly installment, amortization table, EMI chart, home loan EMI, personal loan calculator, car loan EMI, mortgage calculator, loan amortization schedule',
     canonical: 'https://quickncalc.com/emi/',
   };
 
@@ -82,21 +82,23 @@ const EmiCalculator: React.FC = () => {
     <CalculatorLayout
       seo={seo}
       title="Loan EMI Calculator with Amortization Table"
-      description="Calculate your monthly loan EMI (Equated Monthly Installment) with detailed amortization schedule showing principal vs interest breakdown over time."
+      description="Calculate your monthly loan EMI (Equated Monthly Installment) with detailed amortization schedule and interactive charts showing principal vs interest breakdown over time."
       relatedTools={relatedTools}
       faqs={faqs}
     >
       <div className="space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="calculator-grid grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="emi-currency" className="block text-sm font-medium text-gray-700 mb-2">
               Currency
             </label>
             <select
+              id="emi-currency"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-select"
+              aria-label="Select currency for calculations"
             >
               <option value="USD">USD ($)</option>
               <option value="EUR">EUR (€)</option>
@@ -108,30 +110,36 @@ const EmiCalculator: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="emi-loan-amount" className="block text-sm font-medium text-gray-700 mb-2">
               Loan Amount ({currencySymbol})
             </label>
             <input
+              id="emi-loan-amount"
               type="number"
               value={loanAmount}
               onChange={(e) => setLoanAmount(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="100000"
+              aria-describedby="emi-loan-amount-help"
             />
+            <div id="emi-loan-amount-help" className="sr-only">Enter the total loan amount you want to borrow</div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="emi-interest-rate" className="block text-sm font-medium text-gray-700 mb-2">
               Interest Rate (% per annum)
             </label>
             <input
+              id="emi-interest-rate"
               type="number"
               step="0.01"
               value={interestRate}
               onChange={(e) => setInterestRate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="10.5"
+              aria-describedby="emi-interest-rate-help"
             />
+            <div id="emi-interest-rate-help" className="sr-only">Enter the annual interest rate for your loan</div>
           </div>
 
           <YearsMonthsInput
@@ -144,8 +152,8 @@ const EmiCalculator: React.FC = () => {
         </div>
 
         <div className="space-y-6">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">EMI Calculation Results</h3>
+          <div className="calculator-result-card">
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">EMI Calculation Results</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">Monthly EMI:</span>
@@ -174,9 +182,9 @@ const EmiCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="font-semibold mb-3">Loan Summary</h4>
-            <div className="space-y-2 text-sm">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6">
+            <h4 className="font-semibold mb-3 text-base md:text-lg">Loan Summary</h4>
+            <div className="space-y-2 text-sm md:text-base">
               <div className="flex justify-between">
                 <span>Principal Amount:</span>
                 <span>{currencySymbol}{parseFloat(loanAmount || '0').toLocaleString()}</span>
@@ -196,22 +204,25 @@ const EmiCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="calculator-button-group flex flex-row space-x-2 md:space-x-4">
             <button
               onClick={() => setShowTable(!showTable)}
-              className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="flex-1 calculator-button-primary"
+              aria-label={`${showTable ? 'Hide' : 'Show'} detailed amortization table`}
             >
               {showTable ? 'Hide' : 'Show'} Amortization Table
             </button>
             <button
               onClick={() => window.print()}
-              className="flex-1 bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+              className="flex-1 calculator-button-secondary"
+              aria-label="Print EMI calculation results"
             >
               Print Results
             </button>
             <button
               onClick={() => navigator.share?.({ title: 'EMI Calculation', text: `Monthly EMI: ${currencySymbol}${emi.toFixed(2)}` })}
-              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
+              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-medium"
+              aria-label="Share EMI calculation results"
             >
               Share Results
             </button>
@@ -220,7 +231,7 @@ const EmiCalculator: React.FC = () => {
         </div>
 
         {showTable && totalMonths > 0 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
+          <div className="calculator-card">
             <AmortizationTable
               loanAmount={parseFloat(loanAmount || '0')}
               monthlyPayment={emi}

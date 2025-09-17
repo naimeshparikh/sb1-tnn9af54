@@ -42,9 +42,9 @@ const SipCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'SIP Calculator with Growth Chart - Calculate SIP Returns | QuicknCalc',
-    description: 'Calculate SIP (Systematic Investment Plan) returns with detailed growth charts and tables. Free SIP calculator showing year-by-year investment growth.',
-    keywords: 'SIP calculator, systematic investment plan, mutual fund calculator, SIP returns, investment calculator, SIP growth chart',
+    title: 'SIP Calculator with Interactive Growth Charts & Tables - Calculate SIP Returns | QuicknCalc',
+    description: 'Calculate SIP (Systematic Investment Plan) returns with detailed interactive growth charts and year-by-year breakdown tables. Free SIP calculator showing investment growth visualization and compound returns.',
+    keywords: 'SIP calculator, systematic investment plan, mutual fund calculator, SIP returns, investment calculator, SIP growth chart, SIP growth table, investment visualization, compound returns',
     canonical: 'https://quickncalc.com/sip/',
   };
 
@@ -78,21 +78,23 @@ const SipCalculator: React.FC = () => {
     <CalculatorLayout
       seo={seo}
       title="SIP Calculator with Growth Chart"
-      description="Calculate your SIP (Systematic Investment Plan) returns with detailed growth visualization. See how regular investing builds wealth over time with year-by-year breakdown."
+      description="Calculate your SIP (Systematic Investment Plan) returns with detailed interactive growth charts and tables. See how regular investing builds wealth over time with comprehensive year-by-year breakdown and visualization."
       relatedTools={relatedTools}
       faqs={faqs}
     >
       <div className="space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="calculator-grid grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="sip-currency" className="block text-sm font-medium text-gray-700 mb-2">
               Currency
             </label>
             <select
+              id="sip-currency"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-select"
+              aria-label="Select currency for SIP calculations"
             >
               <option value="USD">USD ($)</option>
               <option value="EUR">EUR (€)</option>
@@ -104,36 +106,43 @@ const SipCalculator: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="sip-monthly-investment" className="block text-sm font-medium text-gray-700 mb-2">
               Monthly Investment ({currencySymbol})
             </label>
             <input
+              id="sip-monthly-investment"
               type="number"
               value={monthlyInvestment}
               onChange={(e) => setMonthlyInvestment(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="5000"
+              aria-describedby="sip-monthly-investment-help"
             />
+            <div id="sip-monthly-investment-help" className="sr-only">Enter the amount you plan to invest monthly</div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="sip-annual-return" className="block text-sm font-medium text-gray-700 mb-2">
               Expected Annual Return (%)
             </label>
             <input
+              id="sip-annual-return"
               type="number"
               step="0.1"
               value={annualReturn}
               onChange={(e) => setAnnualReturn(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="12"
+              aria-describedby="sip-annual-return-help"
             />
+            <div id="sip-annual-return-help" className="sr-only">Enter the expected annual return percentage</div>
             <div className="mt-2 flex flex-wrap gap-2">
               {[8, 10, 12, 15, 18].map((rate) => (
                 <button
                   key={rate}
                   onClick={() => setAnnualReturn(rate.toString())}
                   className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
+                  aria-label={`Set return rate to ${rate} percent`}
                 >
                   {rate}%
                 </button>
@@ -142,22 +151,25 @@ const SipCalculator: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="sip-investment-period" className="block text-sm font-medium text-gray-700 mb-2">
               Investment Period (years)
             </label>
             <input
+              id="sip-investment-period"
               type="number"
               value={tenure}
               onChange={(e) => setTenure(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="10"
+              aria-describedby="sip-investment-period-help"
             />
+            <div id="sip-investment-period-help" className="sr-only">Enter the number of years you plan to invest</div>
           </div>
         </div>
 
         <div className="space-y-6">
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">SIP Investment Results</h3>
+          <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 md:p-6 rounded-lg border border-purple-200">
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">SIP Investment Results</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">Total Investment:</span>
@@ -180,9 +192,9 @@ const SipCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="font-semibold mb-3">Investment Summary</h4>
-            <div className="space-y-2 text-sm">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6">
+            <h4 className="font-semibold mb-3 text-base md:text-lg">Investment Summary</h4>
+            <div className="space-y-2 text-sm md:text-base">
               <div className="flex justify-between">
                 <span>Monthly SIP:</span>
                 <span>{currencySymbol}{parseFloat(monthlyInvestment || '0').toLocaleString()}</span>
@@ -204,22 +216,25 @@ const SipCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="calculator-button-group flex flex-row space-x-2 md:space-x-4">
             <button
               onClick={() => setShowChart(!showChart)}
-              className="flex-1 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 transition-colors"
+              className="flex-1 bg-purple-600 text-white px-4 py-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors font-medium"
+              aria-label={`${showChart ? 'Hide' : 'Show'} SIP growth chart and table`}
             >
               {showChart ? 'Hide' : 'Show'} Growth Chart
             </button>
             <button
               onClick={() => window.print()}
-              className="flex-1 bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+              className="flex-1 calculator-button-secondary"
+              aria-label="Print SIP calculation results"
             >
               Print Results
             </button>
             <button
               onClick={() => navigator.share?.({ title: 'SIP Calculation', text: `Maturity Amount: ${currencySymbol}${maturityAmount.toFixed(0)}` })}
-              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
+              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-medium"
+              aria-label="Share SIP calculation results"
             >
               Share Results
             </button>
@@ -228,7 +243,7 @@ const SipCalculator: React.FC = () => {
         </div>
 
         {showChart && parseFloat(tenure || '0') > 0 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
+          <div className="calculator-card">
             <GrowthChart
               principal={0}
               monthlyContribution={parseFloat(monthlyInvestment || '0')}

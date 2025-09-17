@@ -1,3 +1,63 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Performance optimizations */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Consistent component styles */
+@layer components {
+  .calculator-input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors;
+  }
+  
+  .calculator-select {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white transition-colors;
+  }
+  
+  .calculator-button-primary {
+    @apply px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors font-medium;
+  }
+  
+  .calculator-button-secondary {
+    @apply px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors font-medium;
+  }
+  
+  .calculator-card {
+    @apply bg-white rounded-lg p-6 shadow-md border border-gray-200;
+  }
+  
+  .calculator-result-card {
+    @apply bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200;
+  }
+}
+
+/* Loading states */
+.loading-skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .calculator-grid {
+    @apply grid-cols-1 gap-4;
+  }
+  
+  .calculator-button-group {
+    @apply flex-col space-y-2 space-x-0;
+  }
+  
+  .calculator-table {
+    @apply text-sm;
+  }
+}

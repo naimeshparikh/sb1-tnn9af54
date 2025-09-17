@@ -94,27 +94,31 @@ const BmiCalculator: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="bmi-unit-system" className="block text-sm font-medium text-gray-700 mb-2">
               Unit System
             </label>
-            <div className="flex space-x-4">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
               <label className="flex items-center">
                 <input
+                  id="bmi-metric"
                   type="radio"
                   value="metric"
                   checked={unit === 'metric'}
                   onChange={(e) => setUnit(e.target.value as 'metric')}
                   className="mr-2"
+                  name="bmi-unit-system"
                 />
                 Metric (kg, cm)
               </label>
               <label className="flex items-center">
                 <input
+                  id="bmi-imperial"
                   type="radio"
                   value="imperial"
                   checked={unit === 'imperial'}
                   onChange={(e) => setUnit(e.target.value as 'imperial')}
                   className="mr-2"
+                  name="bmi-unit-system"
                 />
                 Imperial (lbs, inches)
               </label>
@@ -122,35 +126,41 @@ const BmiCalculator: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="bmi-weight" className="block text-sm font-medium text-gray-700 mb-2">
               Weight ({unit === 'metric' ? 'kg' : 'lbs'})
             </label>
             <input
+              id="bmi-weight"
               type="number"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder={unit === 'metric' ? '70' : '154'}
+              aria-describedby="bmi-weight-help"
             />
+            <div id="bmi-weight-help" className="sr-only">Enter your body weight</div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="bmi-height" className="block text-sm font-medium text-gray-700 mb-2">
               Height ({unit === 'metric' ? 'cm' : 'inches'})
             </label>
             <input
+              id="bmi-height"
               type="number"
               value={height}
               onChange={(e) => setHeight(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder={unit === 'metric' ? '170' : '67'}
+              aria-describedby="bmi-height-help"
             />
+            <div id="bmi-height-help" className="sr-only">Enter your height</div>
           </div>
         </div>
 
         <div className="space-y-6">
-          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">BMI Results</h3>
+          <div className="calculator-result-card">
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">BMI Results</h3>
             <div className="space-y-3">
               <div className="text-center">
                 <div className="text-3xl font-bold text-blue-600 mb-2">
@@ -163,9 +173,9 @@ const BmiCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="font-semibold mb-3">BMI Categories</h4>
-            <div className="space-y-2 text-sm">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6">
+            <h4 className="font-semibold mb-3 text-base md:text-lg">BMI Categories</h4>
+            <div className="space-y-2 text-sm md:text-base">
               <div className="flex justify-between">
                 <span>Underweight</span>
                 <span className="text-blue-600">Below 18.5</span>
@@ -185,16 +195,18 @@ const BmiCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="calculator-button-group flex flex-row space-x-2 md:space-x-4">
             <button
               onClick={() => window.print()}
-              className="flex-1 bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+              className="flex-1 calculator-button-secondary"
+              aria-label="Print BMI calculation results"
             >
               Print Results
             </button>
             <button
               onClick={() => navigator.share?.({ title: 'BMI Calculation', text: `BMI: ${bmi.toFixed(1)} (${category})` })}
-              className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="flex-1 calculator-button-primary"
+              aria-label="Share BMI calculation results"
             >
               Share Results
             </button>

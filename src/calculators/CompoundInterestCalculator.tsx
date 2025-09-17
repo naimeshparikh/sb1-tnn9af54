@@ -41,9 +41,9 @@ const CompoundInterestCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'Compound Interest Calculator with Growth Chart - Calculate Compound Growth | QuicknCalc',
-    description: 'Calculate compound interest with detailed growth visualization. See how your investments grow over time with year-by-year breakdown and charts.',
-    keywords: 'compound interest calculator, compound growth, investment calculator, interest compounding, future value calculator, growth chart',
+    title: 'Compound Interest Calculator with Interactive Growth Charts & Tables | QuicknCalc',
+    description: 'Calculate compound interest with detailed interactive growth visualization and year-by-year breakdown tables. See how your investments grow over time with comprehensive charts showing the power of compounding.',
+    keywords: 'compound interest calculator, compound growth, investment calculator, interest compounding, future value calculator, growth chart, compound interest table, investment visualization, compounding frequency',
     canonical: 'https://quickncalc.com/compound-interest/',
   };
 
@@ -85,21 +85,23 @@ const CompoundInterestCalculator: React.FC = () => {
     <CalculatorLayout
       seo={seo}
       title="Compound Interest Calculator with Growth Chart"
-      description="Calculate how your money grows with compound interest and visualize the growth over time. See the power of compounding with detailed charts and tables."
+      description="Calculate how your money grows with compound interest and visualize the growth over time with interactive charts and detailed year-by-year breakdown tables. See the power of compounding with comprehensive analysis."
       relatedTools={relatedTools}
       faqs={faqs}
     >
       <div className="space-y-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="calculator-grid grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <div className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="compound-currency" className="block text-sm font-medium text-gray-700 mb-2">
               Currency
             </label>
             <select
+              id="compound-currency"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-select"
+              aria-label="Select currency for compound interest calculations"
             >
               <option value="USD">USD ($)</option>
               <option value="EUR">EUR (€)</option>
@@ -111,53 +113,64 @@ const CompoundInterestCalculator: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="compound-principal" className="block text-sm font-medium text-gray-700 mb-2">
               Principal Amount ({currencySymbol})
             </label>
             <input
+              id="compound-principal"
               type="number"
               value={principal}
               onChange={(e) => setPrincipal(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="10000"
+              aria-describedby="compound-principal-help"
             />
+            <div id="compound-principal-help" className="sr-only">Enter the initial amount you want to invest</div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="compound-rate" className="block text-sm font-medium text-gray-700 mb-2">
               Annual Interest Rate (%)
             </label>
             <input
+              id="compound-rate"
               type="number"
               step="0.1"
               value={rate}
               onChange={(e) => setRate(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="8"
+              aria-describedby="compound-rate-help"
             />
+            <div id="compound-rate-help" className="sr-only">Enter the annual interest rate percentage</div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="compound-time" className="block text-sm font-medium text-gray-700 mb-2">
               Time Period (years)
             </label>
             <input
+              id="compound-time"
               type="number"
               value={time}
               onChange={(e) => setTime(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-input"
               placeholder="10"
+              aria-describedby="compound-time-help"
             />
+            <div id="compound-time-help" className="sr-only">Enter the number of years for investment</div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="compound-frequency" className="block text-sm font-medium text-gray-700 mb-2">
               Compounding Frequency
             </label>
             <select
+              id="compound-frequency"
               value={compound}
               onChange={(e) => setCompound(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="calculator-select"
+              aria-label="Select how often interest is compounded"
             >
               {compoundOptions.map((option) => (
                 <option key={option.value} value={option.value}>
@@ -169,8 +182,8 @@ const CompoundInterestCalculator: React.FC = () => {
         </div>
 
         <div className="space-y-6">
-          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-lg">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Investment Growth</h3>
+          <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 md:p-6 rounded-lg border border-green-200">
+            <h3 className="text-lg md:text-xl font-semibold text-gray-900 mb-4">Investment Growth</h3>
             <div className="space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">Principal Amount:</span>
@@ -193,9 +206,9 @@ const CompoundInterestCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-lg p-4">
-            <h4 className="font-semibold mb-3">Investment Summary</h4>
-            <div className="space-y-2 text-sm">
+          <div className="bg-white border border-gray-200 rounded-lg p-4 md:p-6">
+            <h4 className="font-semibold mb-3 text-base md:text-lg">Investment Summary</h4>
+            <div className="space-y-2 text-sm md:text-base">
               <div className="flex justify-between">
                 <span>Growth Multiple:</span>
                 <span className="font-medium">{(futureValue / parseFloat(principal || '1')).toFixed(2)}x</span>
@@ -217,22 +230,25 @@ const CompoundInterestCalculator: React.FC = () => {
             </div>
           </div>
 
-          <div className="flex space-x-4">
+          <div className="calculator-button-group flex flex-row space-x-2 md:space-x-4">
             <button
               onClick={() => setShowChart(!showChart)}
-              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
+              className="flex-1 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors font-medium"
+              aria-label={`${showChart ? 'Hide' : 'Show'} compound interest growth chart and table`}
             >
               {showChart ? 'Hide' : 'Show'} Growth Chart
             </button>
             <button
               onClick={() => window.print()}
-              className="flex-1 bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 transition-colors"
+              className="flex-1 calculator-button-secondary"
+              aria-label="Print compound interest calculation results"
             >
               Print Results
             </button>
             <button
               onClick={() => navigator.share?.({ title: 'Compound Interest', text: `Future Value: ${currencySymbol}${futureValue.toFixed(2)}` })}
-              className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+              className="flex-1 calculator-button-primary"
+              aria-label="Share compound interest calculation results"
             >
               Share Results
             </button>
@@ -241,7 +257,7 @@ const CompoundInterestCalculator: React.FC = () => {
         </div>
 
         {showChart && parseFloat(time || '0') > 0 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
+          <div className="calculator-card">
             <GrowthChart
               principal={parseFloat(principal || '0')}
               monthlyContribution={0}

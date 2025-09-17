@@ -19,35 +19,39 @@ const YearsMonthsInput: React.FC<YearsMonthsInputProps> = ({
 }) => {
   return (
     <div className={className}>
-      <label className="block text-sm font-medium text-gray-700 mb-2">
+      <label className="block text-sm font-medium text-gray-700 mb-2" id={`${label.toLowerCase().replace(/\s+/g, '-')}-label`}>
         {label}
       </label>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 gap-2 md:gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Years</label>
+          <label htmlFor={`${label.toLowerCase().replace(/\s+/g, '-')}-years`} className="block text-xs text-gray-500 mb-1">Years</label>
           <input
+            id={`${label.toLowerCase().replace(/\s+/g, '-')}-years`}
             type="number"
             min="0"
             value={years}
             onChange={(e) => onYearsChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="calculator-input"
             placeholder="0"
+            aria-describedby={`${label.toLowerCase().replace(/\s+/g, '-')}-total`}
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Months</label>
+          <label htmlFor={`${label.toLowerCase().replace(/\s+/g, '-')}-months`} className="block text-xs text-gray-500 mb-1">Months</label>
           <input
+            id={`${label.toLowerCase().replace(/\s+/g, '-')}-months`}
             type="number"
             min="0"
             max="11"
             value={months}
             onChange={(e) => onMonthsChange(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="calculator-input"
             placeholder="0"
+            aria-describedby={`${label.toLowerCase().replace(/\s+/g, '-')}-total`}
           />
         </div>
       </div>
-      <div className="mt-1 text-xs text-gray-500">
+      <div id={`${label.toLowerCase().replace(/\s+/g, '-')}-total`} className="mt-1 text-xs text-gray-500">
         Total: {(parseFloat(years || '0') * 12 + parseFloat(months || '0'))} months
       </div>
     </div>

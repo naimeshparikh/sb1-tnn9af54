@@ -1,4 +1,5 @@
 import React from 'react';
+import { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
@@ -27,7 +28,41 @@ interface CalculatorLayoutProps {
   children: React.ReactNode;
   relatedTools: RelatedTool[];
   faqs: FAQItem[];
+  loading?: boolean;
 }
+
+// FAQ Schema component for structured data
+const FAQSchema: React.FC<{ faqs: FAQItem[] }> = ({ faqs }) => {
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+    />
+  );
+};
+
+// Loading skeleton component
+const LoadingSkeleton: React.FC = () => (
+  <div className="space-y-4">
+    <div className="loading-skeleton h-8 w-3/4"></div>
+    <div className="loading-skeleton h-4 w-full"></div>
+    <div className="loading-skeleton h-4 w-2/3"></div>
+    <div className="loading-skeleton h-32 w-full"></div>
+  </div>
+);
 
 const CalculatorLayout: React.FC<CalculatorLayoutProps> = ({
   seo,
@@ -36,6 +71,7 @@ const CalculatorLayout: React.FC<CalculatorLayoutProps> = ({
   children,
   relatedTools,
   faqs,
+  loading = false,
 }) => {
   return (
     <>
@@ -49,48 +85,61 @@ const CalculatorLayout: React.FC<CalculatorLayoutProps> = ({
         <meta property="og:url" content={seo.canonical} />
         <meta name="twitter:title" content={seo.title} />
         <meta name="twitter:description" content={seo.description} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </Helmet>
+      
+      <FAQSchema faqs={faqs} />
 
-      <div className="space-y-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-900">{title}</h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">{description}</p>
-        </div>
+      <div className="space-y-8 min-h-screen">
+        {/* Header Section */}
+        <header className="text-center space-y-4 py-4">
+          <h1 className="text-2xl md:text-4xl font-bold text-gray-900 leading-tight">{title}</h1>
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">{description}</p>
+        </header>
 
-        <div className="bg-white rounded-lg p-6 md:p-8 shadow-md">
-          {children}
-        </div>
+        {/* Main Calculator Section */}
+        <main className="calculator-card">
+          {loading ? (
+            <LoadingSkeleton />
+          ) : (
+            <Suspense fallback={<LoadingSkeleton />}>
+              {children}
+            </Suspense>
+          )}
+        </main>
 
-        {/* FAQ Section */}
-        <section className="bg-white rounded-lg p-6 md:p-8 shadow-md">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index}>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Related Tools */}
-        <section className="bg-white rounded-lg p-6 md:p-8 shadow-md">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Related Tools Section */}
+        <section className="calculator-card" aria-labelledby="related-tools-heading">
+          <h2 id="related-tools-heading" className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Related Tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {relatedTools.map((tool) => (
               <Link
                 key={tool.path}
                 to={tool.path}
-                className="p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow"
+                className="p-4 border border-gray-200 rounded-lg hover:shadow-md hover:border-blue-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                aria-label={`Navigate to ${tool.name}`}
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{tool.name}</h3>
-                <p className="text-gray-600">{tool.description}</p>
+                <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-2">{tool.name}</h3>
+                <p className="text-sm md:text-base text-gray-600">{tool.description}</p>
               </Link>
             ))}
           </div>
         </section>
-      </div>
+
+        {/* FAQ Section */}
+        <section className="calculator-card" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border-b border-gray-200 pb-4 last:border-b-0">
+                <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        </div>
     </>
   );
 };

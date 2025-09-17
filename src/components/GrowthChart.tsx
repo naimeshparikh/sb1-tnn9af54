@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 interface GrowthEntry {
   year: number;
@@ -24,7 +24,7 @@ const GrowthChart: React.FC<GrowthChartProps> = ({
   currencySymbol,
   title = "Investment Growth Over Time",
 }) => {
-  const generateGrowthData = (): GrowthEntry[] => {
+  const growthData = useMemo((): GrowthEntry[] => {
     const data: GrowthEntry[] = [];
     const monthlyRate = annualRate / 100 / 12;
     let currentPrincipal = principal;
@@ -55,35 +55,36 @@ const GrowthChart: React.FC<GrowthChartProps> = ({
     }
 
     return data;
-  };
-
-  const growthData = generateGrowthData();
+  }, [principal, monthlyContribution, annualRate, years]);
+  
   const maxValue = Math.max(...growthData.map(d => d.total));
 
   return (
-    <div className="space-y-4">
-      <h4 className="font-semibold text-gray-900">{title}</h4>
+    <div className="space-y-4" role="region" aria-labelledby="growth-chart-title">
+      <h4 id="growth-chart-title" className="text-lg md:text-xl font-semibold text-gray-900">{title}</h4>
       
       {/* Simple Bar Chart */}
-      <div className="space-y-2">
+      <div className="space-y-2 overflow-x-auto">
         {growthData.slice(0, Math.min(11, growthData.length)).map((entry, index) => {
           const principalWidth = (entry.principal / maxValue) * 100;
           const interestWidth = (entry.interest / maxValue) * 100;
           
           return (
-            <div key={entry.year} className="flex items-center space-x-2 text-sm">
-              <div className="w-8 text-gray-600">Y{entry.year}</div>
-              <div className="flex-1 bg-gray-200 rounded-full h-6 relative overflow-hidden">
+            <div key={entry.year} className="flex items-center space-x-2 text-xs md:text-sm min-w-0">
+              <div className="w-6 md:w-8 text-gray-600 flex-shrink-0">Y{entry.year}</div>
+              <div className="flex-1 bg-gray-200 rounded-full h-4 md:h-6 relative overflow-hidden min-w-0">
                 <div 
                   className="bg-blue-500 h-full rounded-full"
                   style={{ width: `${principalWidth}%` }}
+                  aria-label={`Principal: ${principalWidth.toFixed(1)}%`}
                 />
                 <div 
                   className="bg-green-500 h-full absolute top-0 rounded-full"
                   style={{ left: `${principalWidth}%`, width: `${interestWidth}%` }}
+                  aria-label={`Interest: ${interestWidth.toFixed(1)}%`}
                 />
               </div>
-              <div className="w-20 text-right text-gray-900 font-medium">
+              <div className="w-16 md:w-20 text-right text-gray-900 font-medium flex-shrink-0 text-xs md:text-sm">
                 {currencySymbol}{entry.total.toLocaleString('en-US', { maximumFractionDigits: 0 })}
               </div>
             </div>
@@ -92,39 +93,39 @@ const GrowthChart: React.FC<GrowthChartProps> = ({
       </div>
 
       {/* Legend */}
-      <div className="flex space-x-4 text-sm">
+      <div className="flex flex-wrap gap-4 text-xs md:text-sm">
         <div className="flex items-center space-x-2">
-          <div className="w-4 h-4 bg-blue-500 rounded"></div>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-blue-500 rounded"></div>
           <span>Principal</span>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-4 h-4 bg-green-500 rounded"></div>
+          <div className="w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded"></div>
           <span>Interest/Growth</span>
         </div>
       </div>
 
       {/* Data Table */}
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white border border-gray-200 rounded-lg">
+      <div className="overflow-x-auto -mx-2 md:mx-0">
+        <table className="min-w-full bg-white border border-gray-200 rounded-lg calculator-table">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
-              <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Principal</th>
-              <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interest</th>
-              <th className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+              <th scope="col" className="px-2 md:px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
+              <th scope="col" className="px-2 md:px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Principal</th>
+              <th scope="col" className="px-2 md:px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Interest</th>
+              <th scope="col" className="px-2 md:px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
             {growthData.map((entry, index) => (
               <tr key={entry.year} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                <td className="px-3 py-2 text-sm text-gray-900">{entry.year}</td>
-                <td className="px-3 py-2 text-sm text-blue-600">
+                <td className="px-2 md:px-3 py-2 text-xs md:text-sm text-gray-900">{entry.year}</td>
+                <td className="px-2 md:px-3 py-2 text-xs md:text-sm text-blue-600">
                   {currencySymbol}{entry.principal.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                 </td>
-                <td className="px-3 py-2 text-sm text-green-600">
+                <td className="px-2 md:px-3 py-2 text-xs md:text-sm text-green-600">
                   {currencySymbol}{entry.interest.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                 </td>
-                <td className="px-3 py-2 text-sm font-medium text-gray-900">
+                <td className="px-2 md:px-3 py-2 text-xs md:text-sm font-medium text-gray-900">
                   {currencySymbol}{entry.total.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                 </td>
               </tr>
