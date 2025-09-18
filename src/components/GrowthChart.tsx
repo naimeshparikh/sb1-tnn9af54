@@ -55,7 +55,7 @@ const GrowthChart: React.FC<GrowthChartProps> = ({
     }
 
     return data;
-  }, [principal, monthlyContribution, annualRate, years]);
+    }, [principal, monthlyContribution, annualRate, years]);
   
   const maxValue = Math.max(...growthData.map(d => d.total));
 
@@ -65,7 +65,7 @@ const GrowthChart: React.FC<GrowthChartProps> = ({
       
       {/* Simple Bar Chart */}
       <div className="space-y-2 overflow-x-auto">
-        {growthData.slice(0, Math.min(11, growthData.length)).map((entry, index) => {
+        {growthData.map((entry, index) => {
           const principalWidth = (entry.principal / maxValue) * 100;
           const interestWidth = (entry.interest / maxValue) * 100;
           

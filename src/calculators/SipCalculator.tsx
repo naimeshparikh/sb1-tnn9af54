@@ -243,7 +243,7 @@ const SipCalculator: React.FC = () => {
         </div>
 
         {showChart && parseFloat(tenure || '0') > 0 && (
-          <div className="calculator-card">
+          <div className="calculator-card overflow-hidden">
             <GrowthChart
               principal={0}
               monthlyContribution={parseFloat(monthlyInvestment || '0')}

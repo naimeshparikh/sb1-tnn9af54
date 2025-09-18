@@ -279,7 +279,7 @@ const SavingsGoalCalculator: React.FC = () => {
         </div>
 
         {showChart && totalMonths > 0 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
+          <div className="bg-white rounded-lg p-6 shadow-md overflow-hidden">
             <GrowthChart
               principal={parseFloat(currentSavings || '0')}
               monthlyContribution={monthlyRequired}

@@ -257,7 +257,7 @@ const CompoundInterestCalculator: React.FC = () => {
         </div>
 
         {showChart && parseFloat(time || '0') > 0 && (
-          <div className="calculator-card">
+          <div className="calculator-card overflow-hidden">
             <GrowthChart
               principal={parseFloat(principal || '0')}
               monthlyContribution={0}

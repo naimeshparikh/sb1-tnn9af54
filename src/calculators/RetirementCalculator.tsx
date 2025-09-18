@@ -301,7 +301,7 @@ const RetirementCalculator: React.FC = () => {
         </div>
 
         {showChart && yearsToRetirement > 0 && (
-          <div className="bg-white rounded-lg p-6 shadow-md">
+          <div className="bg-white rounded-lg p-6 shadow-md overflow-hidden">
             <GrowthChart
               principal={parseFloat(currentSavings || '0')}
               monthlyContribution={parseFloat(monthlyContribution || '0')}

@@ -58,6 +58,15 @@
   }
   
   .calculator-table {
-    @apply text-sm;
+    @apply text-sm overflow-x-auto;
+  }
+  
+  .calculator-table table {
+    @apply min-w-full;
+  }
+  
+  .calculator-table th,
+  .calculator-table td {
+    @apply whitespace-nowrap;
   }
 }
