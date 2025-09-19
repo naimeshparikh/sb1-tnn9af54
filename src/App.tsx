@@ -18,6 +18,11 @@ import DueDateCalculator from './calculators/DueDateCalculator';
 import BmiCalculator from './calculators/BmiCalculator';
 import CalorieCalculator from './calculators/CalorieCalculator';
 import BodyFatCalculator from './calculators/BodyFatCalculator';
+import GradeCalculator from './calculators/GradeCalculator';
+import GpaCalculator from './calculators/GpaCalculator';
+import PercentageCalculator from './calculators/PercentageCalculator';
+import WeightedAverageCalculator from './calculators/WeightedAverageCalculator';
+import ExamTimerTool from './calculators/ExamTimerTool';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -53,6 +58,11 @@ function App() {
           <Route path="/bmi" element={<BmiCalculator />} />
           <Route path="/calorie" element={<CalorieCalculator />} />
           <Route path="/body-fat" element={<BodyFatCalculator />} />
+          <Route path="/grade" element={<GradeCalculator />} />
+          <Route path="/gpa" element={<GpaCalculator />} />
+          <Route path="/percentage" element={<PercentageCalculator />} />
+          <Route path="/weighted-average" element={<WeightedAverageCalculator />} />
+          <Route path="/exam-timer" element={<ExamTimerTool />} />
         </Routes>
       </Layout>
     </Router>

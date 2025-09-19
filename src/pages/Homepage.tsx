@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Calculator, DollarSign, PiggyBank, Heart } from 'lucide-react';
+import { Calculator, DollarSign, PiggyBank, Heart, GraduationCap } from 'lucide-react';
 
 const Homepage: React.FC = () => {
   const financeCalculators = [
@@ -28,13 +28,21 @@ const Homepage: React.FC = () => {
     { name: 'Body Fat Calculator', path: '/body-fat', description: 'Estimate your body fat percentage' },
   ];
 
+  const educationCalculators = [
+    { name: 'Grade Calculator', path: '/grade', description: 'Calculate final grades with assignments and weights' },
+    { name: 'GPA Calculator', path: '/gpa', description: 'Calculate your GPA on 4.0 or 5.0 scale' },
+    { name: 'Percentage Calculator', path: '/percentage', description: 'Calculate percentage increase, decrease, and more' },
+    { name: 'Weighted Average Calculator', path: '/weighted-average', description: 'Calculate weighted averages for any data set' },
+    { name: 'Exam Timer Tool', path: '/exam-timer', description: 'Time your exams with countdown and alerts' },
+  ];
+
   return (
     <div className="space-y-12">
       {/* Hero Section */}
       <div className="text-center space-y-4">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Welcome to QuicknCalc</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          QuicknCalc provides free, easy-to-use online calculators for your financial, savings, and health planning. 
+          QuicknCalc provides free, easy-to-use online calculators for finance, health, and education. 
           Choose from the tools below:
         </p>
       </div>
@@ -81,6 +89,26 @@ const Homepage: React.FC = () => {
           </div>
         </section>
 
+        {/* Education & Student Tools */}
+        <section>
+          <div className="flex items-center space-x-3 mb-6">
+            <GraduationCap className="h-8 w-8 text-purple-600" />
+            <h2 className="text-3xl font-bold text-gray-900">Education & Student Tools</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {educationCalculators.map((calc) => (
+              <Link
+                key={calc.path}
+                to={calc.path}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{calc.name}</h3>
+                <p className="text-gray-600">{calc.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* Health & Wellness Calculators */}
         <section>
           <div className="flex items-center space-x-3 mb-6">
@@ -115,8 +143,8 @@ const Homepage: React.FC = () => {
           <div>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Do they work worldwide?</h3>
             <p className="text-gray-600">
-              Absolutely! Our calculators support multiple currencies and are designed to work globally. 
-              Financial calculations adapt to different interest rate systems and tax structures.
+              Absolutely! Our calculators support multiple currencies and grading systems, designed to work globally. 
+              Financial and educational calculations adapt to different systems and standards.
             </p>
           </div>
           <div>

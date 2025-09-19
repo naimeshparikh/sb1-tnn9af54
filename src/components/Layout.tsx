@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <nav className="hidden md:flex space-x-8">
               <Link to="/" className="text-gray-600 hover:text-blue-600 transition-colors">Home</Link>
               <Link to="/emi" className="text-gray-600 hover:text-blue-600 transition-colors">Finance</Link>
-              <Link to="/savings-goal" className="text-gray-600 hover:text-blue-600 transition-colors">Savings</Link>
+              <Link to="/grade" className="text-gray-600 hover:text-blue-600 transition-colors">Education</Link>
               <Link to="/bmi" className="text-gray-600 hover:text-blue-600 transition-colors">Health</Link>
             </nav>
           </div>
