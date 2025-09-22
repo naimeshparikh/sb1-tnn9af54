@@ -17,4 +17,4 @@ export default defineConfig({
     open: true
   },
   base: '/', // needed so /emi, /sip, etc. resolve correctly
-})
+}
