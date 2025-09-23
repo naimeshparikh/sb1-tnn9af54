@@ -86,8 +86,7 @@ const AmortizationTable: React.FC<AmortizationTableProps> = ({
       </div>
       
       <div className="overflow-x-auto -mx-2 md:mx-0">
-        <div className="min-w-full overflow-x-auto">
-          <table className="w-full bg-white border border-gray-200 rounded-lg calculator-table" style={{ minWidth: '500px' }}>
+        <table className="min-w-full bg-white border border-gray-200 rounded-lg calculator-table">
           <thead className="bg-gray-50">
             <tr>
               <th scope="col" className="px-2 md:px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Year</th>
@@ -117,7 +116,6 @@ const AmortizationTable: React.FC<AmortizationTableProps> = ({
             ))}
           </tbody>
         </table>
-        </div>
       </div>
     </div>
   );
