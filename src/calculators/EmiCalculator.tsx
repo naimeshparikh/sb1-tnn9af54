@@ -231,7 +231,7 @@ const EmiCalculator: React.FC = () => {
         </div>
 
         {showTable && totalMonths > 0 && (
-          <div className="calculator-card overflow-hidden">
+          <div className="calculator-card">
             <AmortizationTable
               loanAmount={parseFloat(loanAmount || '0')}
               monthlyPayment={emi}
