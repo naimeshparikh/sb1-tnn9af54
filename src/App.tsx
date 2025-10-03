@@ -23,6 +23,9 @@ import GpaCalculator from './calculators/GpaCalculator';
 import PercentageCalculator from './calculators/PercentageCalculator';
 import WeightedAverageCalculator from './calculators/WeightedAverageCalculator';
 import ExamTimerTool from './calculators/ExamTimerTool';
+import AboutPage from './pages/AboutPage';
+import PrivacyPage from './pages/PrivacyPage';
+import ContactPage from './pages/ContactPage';
 
 // Component to handle scroll to top on route change
 function ScrollToTop() {
@@ -63,6 +66,9 @@ function App() {
           <Route path="/percentage" element={<PercentageCalculator />} />
           <Route path="/weighted-average" element={<WeightedAverageCalculator />} />
           <Route path="/exam-timer" element={<ExamTimerTool />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Layout>
     </Router>

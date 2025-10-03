@@ -84,9 +84,9 @@ const GradeCalculator: React.FC = () => {
   };
 
   const seo = {
-    title: 'Grade Calculator - Calculate Final Grades with Weights | QuicknCalc',
-    description: 'Calculate your final grade with weighted assignments, exams, and projects. Free grade calculator with letter grade conversion and percentage results.',
-    keywords: 'grade calculator, final grade calculator, weighted grade calculator, letter grade, GPA calculator, assignment calculator, exam grade',
+    title: 'Grade Calculator - Weighted Grade Calculator & Final Grade Calculator',
+    description: 'Calculate your final grade with our free weighted grade calculator. Enter exam scores and assignment grades to get your overall grade and GPA instantly.',
+    keywords: 'grade calculator, overall grade calculator, weighted grade calculator, final grade calculator, GPA calculator, exam grade calculator',
     canonical: 'https://quickncalc.com/grade/',
   };
 
@@ -119,8 +119,8 @@ const GradeCalculator: React.FC = () => {
   return (
     <CalculatorLayout
       seo={seo}
-      title="Grade Calculator"
-      description="Calculate your final grade with weighted assignments, exams, and projects. Enter your scores and weights to see your overall grade percentage and letter grade."
+      title="Grade Calculator - Calculate Your Final Grade"
+      description="Use our free grade calculator to determine your final grade based on weighted assignments and exam scores. This overall grade calculator helps you track your academic performance by calculating weighted grades for all your coursework. Enter your assignment scores and their weights to instantly see your final grade percentage and letter grade."
       relatedTools={relatedTools}
       faqs={faqs}
     >

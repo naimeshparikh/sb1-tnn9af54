@@ -134,9 +134,9 @@ const ExamTimerTool: React.FC = () => {
   };
 
   const seo = {
-    title: 'Exam Timer Tool - Countdown Timer for Tests & Exams | QuicknCalc',
-    description: 'Free exam timer with countdown, visual alerts, and sound notifications. Perfect for timing tests, exams, quizzes, and study sessions with customizable duration.',
-    keywords: 'exam timer, test timer, countdown timer, study timer, quiz timer, exam countdown, test countdown, academic timer',
+    title: 'Exam Timer - Test Timer Online with Countdown Clock',
+    description: 'Free online exam timer and test countdown clock for students. Set your test duration and get audio alerts at key intervals. Perfect study timer for online exams.',
+    keywords: 'exam timer, test timer online, countdown timer for exam, study timer, online exam stopwatch, test countdown clock',
     canonical: 'https://quickncalc.com/exam-timer/',
   };
 
@@ -171,8 +171,8 @@ const ExamTimerTool: React.FC = () => {
   return (
     <CalculatorLayout
       seo={seo}
-      title="Exam Timer Tool"
-      description="Time your exams and tests with our countdown timer. Features visual and audio alerts, pause/resume functionality, and customizable duration for any test or study session."
+      title="Exam Timer - Online Test Timer"
+      description="Keep track of your test time with this free exam timer and countdown clock. Perfect for online exams, this test timer provides visual progress tracking and audio alerts to help you manage your exam time effectively. Use this study timer for practice tests, quizzes, or any timed assessment."
       relatedTools={relatedTools}
       faqs={faqs}
     >
