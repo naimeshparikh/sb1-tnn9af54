@@ -80,12 +80,13 @@ const GpaCalculator: React.FC = () => {
   };
 
   const seo = {
-    title: 'GPA Calculator - Calculate Your Grade Point Average | QuicknCalc',
-    description: 'Calculate your GPA on 4.0 or 5.0 scale. Free GPA calculator with course grades and credit hours. Track your academic performance easily.',
-    keywords: 'GPA calculator, grade point average, 4.0 scale, 5.0 scale, college GPA, university GPA, academic calculator, semester GPA',
-    canonical: 'https://quickncalc.com/gpa/',
+    title: "GPA Calculator – Calculate College & High School GPA",
+    description:
+      "Calculate your GPA (Grade Point Average) easily for college or high school. Supports weighted and unweighted GPA systems.",
+    keywords:
+      "GPA calculator, grade point average calculator, weighted GPA, unweighted GPA, CGPA calculator, college GPA calculator",
+    canonical: "https://quickncalc.com/gpa/",
   };
-
   const relatedTools = [
     { name: 'Grade Calculator', path: '/grade', description: 'Calculate final grades with weights' },
     { name: 'Percentage Calculator', path: '/percentage', description: 'Calculate percentage increase and decrease' },

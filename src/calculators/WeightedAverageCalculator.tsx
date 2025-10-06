@@ -72,10 +72,12 @@ const WeightedAverageCalculator: React.FC = () => {
   };
 
   const seo = {
-    title: 'Weighted Average Calculator - Calculate Weighted GPA & Exam Scores',
-    description: 'Calculate weighted average for grades, GPA, and test scores instantly. Free percentage weight calculator helps you determine weighted averages for any data set.',
-    keywords: 'weighted average calculator, calculate weighted average, GPA weighted calculator, exam weight calculator, percentage weight calculator',
-    canonical: 'https://quickncalc.com/weighted-average/',
+    title: "Weighted Average Calculator – Calculate Weighted Grades & Scores",
+    description:
+      "Calculate your weighted average for grades, scores, or investments. Supports GPA, marks, and financial weighting calculations.",
+    keywords:
+      "weighted average calculator, GPA weighted calculator, weighted score calculator, weighted percentage calculator, average weight calculator",
+    canonical: "https://quickncalc.com/weighted-average/",
   };
 
   const relatedTools = [

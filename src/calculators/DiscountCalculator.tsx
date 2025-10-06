@@ -37,12 +37,14 @@ const DiscountCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'Discount Calculator - Calculate Percentage Discount | QuicknCalc',
-    description: 'Calculate discount percentages and savings instantly. Free discount calculator for shopping, sales, and price comparisons with multiple currencies.',
-    keywords: 'discount calculator, percentage discount, sale price calculator, savings calculator, price reduction',
-    canonical: 'https://quickncalc.com/discount/',
+    title: "Discount Calculator – Calculate Discounts & Sale Prices Easily",
+    description:
+      "Find discounted prices fast with this simple discount calculator. Calculate percentage off, final sale price, and total savings instantly.",
+    keywords:
+      "discount calculator, sale price calculator, percentage off calculator, savings calculator, price discount tool",
+    canonical: "https://quickncalc.com/discount/",
   };
-
+  
   const relatedTools = [
     { name: 'GST / VAT Calculator', path: '/gst-vat', description: 'Calculate tax amounts' },
     { name: 'Currency Converter', path: '/currency', description: 'Convert between currencies' },

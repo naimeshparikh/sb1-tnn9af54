@@ -61,10 +61,12 @@ const CalorieCalculator: React.FC = () => {
   ];
 
   const seo = {
-    title: 'Calorie Calculator (TDEE) - Calculate Daily Calorie Needs | QuicknCalc',
-    description: 'Calculate your daily calorie needs with our TDEE calculator. Find out how many calories you need for weight loss, maintenance, or weight gain.',
-    keywords: 'calorie calculator, TDEE calculator, daily calorie needs, BMR calculator, weight loss calories, calorie deficit',
-    canonical: 'https://quickncalc.com/calorie/',
+    title: "Calorie Calculator – Daily Calorie Needs & Weight Goal Planner",
+    description:
+      "Calculate how many calories you need daily to maintain, lose, or gain weight. Free calorie calculator with BMR and TDEE results.",
+    keywords:
+      "calorie calculator, daily calorie needs, BMR calculator, TDEE calculator, calorie intake calculator, weight loss calorie calculator",
+    canonical: "https://quickncalc.com/calorie/",
   };
 
   const relatedTools = [

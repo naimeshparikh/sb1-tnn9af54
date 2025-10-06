@@ -45,11 +45,13 @@ const GstVatCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'GST VAT Calculator - Calculate Tax Online | QuicknCalc',
-    description: 'Calculate GST, VAT, and sales tax instantly. Free tax calculator supporting multiple currencies and tax rates. Calculate inclusive and exclusive tax amounts.',
-    keywords: 'GST calculator, VAT calculator, sales tax calculator, tax calculation, inclusive tax, exclusive tax, GST rate',
-    canonical: 'https://quickncalc.com/gst-vat/',
-  };
+    title: "GST & VAT Calculator – Add or Remove Tax Instantly | QuicknCalc",
+    description:
+      "Easily calculate GST or VAT for your products and services. Add or remove tax amounts, view net and gross values instantly.",
+    keywords:
+      "gst calculator, vat calculator, tax calculator, add gst, remove gst, goods and services tax calculator, vat percentage calculator",
+    canonical: "https://quickncalc.com/gst-vat/",
+  };  
 
   const relatedTools = [
     { name: 'Percentage Discount Calculator', path: '/discount', description: 'Calculate discounts and savings' },

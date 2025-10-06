@@ -63,11 +63,14 @@ const RetirementCalculator: React.FC = () => {
   const yearsToRetirement = parseFloat(retirementAge) - parseFloat(currentAge);
 
   const seo = {
-    title: 'Retirement Calculator with Growth Projection - Plan Your Retirement Savings | QuicknCalc',
-    description: 'Calculate retirement savings with detailed growth projections. Free retirement planning calculator with charts showing your savings growth over time.',
-    keywords: 'retirement calculator, retirement planning, retirement savings, pension calculator, 401k calculator, retirement goal planning, retirement growth chart',
-    canonical: 'https://quickncalc.com/retirement/',
+    title: "Retirement Calculator – Plan Your Retirement Savings",
+    description:
+      "Plan for a secure retirement with this free calculator. Estimate how much you need to save monthly to reach your retirement goal based on current age and income.",
+    keywords:
+      "retirement calculator, pension calculator, retirement savings calculator, retirement planning, future savings calculator",
+    canonical: "https://quickncalc.com/retirement/",
   };
+  
 
   const relatedTools = [
     { name: 'Compound Interest Calculator', path: '/compound-interest', description: 'See how money grows over time' },

@@ -47,10 +47,12 @@ const PropertyProfitCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'Property Investment Profit Calculator | QuicknCalc',
-    description: 'Calculate real estate investment returns, ROI, and annualized profits. Free property profit calculator with all costs included for accurate investment analysis.',
-    keywords: 'property profit calculator, real estate investment calculator, property ROI, real estate returns, investment property calculator',
-    canonical: 'https://quickncalc.com/property-profit/',
+    title: "Property Profit Calculator – Real Estate ROI & Investment Returns",
+    description:
+      "Estimate profit from your real estate investments using this Property Profit Calculator. Find ROI, gain percentage, and tax-adjusted profit.",
+    keywords:
+      "property profit calculator, real estate roi calculator, property return calculator, investment profit calculator",
+    canonical: "https://quickncalc.com/property-profit/",
   };
 
   const relatedTools = [

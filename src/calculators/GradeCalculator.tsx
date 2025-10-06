@@ -84,12 +84,13 @@ const GradeCalculator: React.FC = () => {
   };
 
   const seo = {
-    title: 'Grade Calculator - Weighted Grade Calculator & Final Grade Calculator',
-    description: 'Calculate your final grade with our free weighted grade calculator. Enter exam scores and assignment grades to get your overall grade and GPA instantly.',
-    keywords: 'grade calculator, overall grade calculator, weighted grade calculator, final grade calculator, GPA calculator, exam grade calculator',
-    canonical: 'https://quickncalc.com/grade/',
+    title: "Grade Calculator – Find Your Final Grade & Class Average",
+    description:
+      "Easily calculate your final grade, class average, and required marks to reach your target. Free online grade calculator for students and teachers.",
+    keywords:
+      "grade calculator, final grade calculator, class average calculator, test grade calculator, marks calculator, course grade calculator",
+    canonical: "https://quickncalc.com/grade/",
   };
-
   const relatedTools = [
     { name: 'GPA Calculator', path: '/gpa', description: 'Calculate your GPA on 4.0 or 5.0 scale' },
     { name: 'Percentage Calculator', path: '/percentage', description: 'Calculate percentage increase and decrease' },

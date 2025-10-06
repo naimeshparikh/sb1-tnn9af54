@@ -60,10 +60,12 @@ const AgeCalculator: React.FC = () => {
   }, [birthDate, currentDate]);
 
   const seo = {
-    title: 'Age Calculator - Calculate Exact Age | QuicknCalc',
-    description: 'Calculate your exact age in years, months, days, weeks, and hours. Free age calculator to find age between any two dates with precise calculations.',
-    keywords: 'age calculator, calculate age, age in days, age in months, exact age, date calculator',
-    canonical: 'https://quickncalc.com/age/',
+    title: "Age Calculator – Calculate Your Exact Age in Years, Months, Days",
+    description:
+      "Find your exact age in years, months, days, and even hours with this simple age calculator. Perfect for birthdays or official forms.",
+    keywords:
+      "age calculator, calculate age, date of birth calculator, birthday calculator, how old am I calculator",
+    canonical: "https://quickncalc.com/age/",
   };
 
   const relatedTools = [

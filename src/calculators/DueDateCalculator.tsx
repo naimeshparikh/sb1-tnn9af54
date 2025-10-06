@@ -58,12 +58,13 @@ const DueDateCalculator: React.FC = () => {
   };
 
   const seo = {
-    title: 'Pregnancy Due Date Calculator - Calculate Baby Due Date | QuicknCalc',
-    description: 'Calculate your pregnancy due date based on your last menstrual period. Free due date calculator with trimester information and pregnancy timeline.',
-    keywords: 'due date calculator, pregnancy calculator, baby due date, pregnancy weeks, trimester calculator, pregnancy timeline',
-    canonical: 'https://quickncalc.com/due-date/',
+    title: "Due Date Calculator – Estimate Pregnancy Due Date & Timeline",
+    description:
+      "Find your estimated due date quickly using this free pregnancy due date calculator. Calculate based on your last period or conception date.",
+    keywords:
+      "due date calculator, pregnancy calculator, estimated delivery date, baby due date, pregnancy timeline calculator",
+    canonical: "https://quickncalc.com/due-date/",
   };
-
   const relatedTools = [
     { name: 'Age Calculator', path: '/age', description: 'Calculate exact age' },
     { name: 'BMI Calculator', path: '/bmi', description: 'Calculate body mass index' },

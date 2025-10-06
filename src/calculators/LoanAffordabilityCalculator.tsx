@@ -58,12 +58,13 @@ const LoanAffordabilityCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'Loan Affordability Calculator - How Much Can I Borrow? | QuicknCalc',
-    description: 'Calculate how much you can afford to borrow for a home loan. Free affordability calculator considers your income, debts, and financial situation.',
-    keywords: 'loan affordability calculator, how much can I borrow, mortgage affordability, home loan calculator, debt to income ratio',
-    canonical: 'https://quickncalc.com/loan-affordability/',
+    title: "Loan Affordability Calculator – How Much Loan Can You Afford?",
+    description:
+      "Find out how much loan you can afford with this free calculator. Estimate affordable loan amount based on your income, expenses, and interest rate.",
+    keywords:
+      "loan affordability calculator, how much loan can I afford, home loan eligibility, income-based loan calculator",
+    canonical: "https://quickncalc.com/loan-affordability/",
   };
-
   const relatedTools = [
     { name: 'Mortgage Calculator', path: '/mortgage', description: 'Calculate mortgage payments' },
     { name: 'EMI Calculator', path: '/emi', description: 'Calculate loan EMI payments' },

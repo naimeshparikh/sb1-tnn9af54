@@ -31,7 +31,49 @@ interface CalculatorLayoutProps {
   loading?: boolean;
 }
 
-// FAQ Schema component for structured data
+const getCalculatorType = (canonical: string): string => {
+  const healthCalculators = ['/bmi', '/calorie', '/body-fat', '/due-date'];
+  const educationCalculators = ['/grade', '/gpa', '/exam-timer', '/weighted-average'];
+  const financeCalculators = ['/compound-interest', '/mortgage', '/emi', '/sip', '/retirement', '/savings-goal', '/loan-affordability', '/property-profit'];
+
+  const path = canonical.replace('https://quickncalc.com', '').replace(/\/$/, '');
+
+  if (healthCalculators.some(calc => path.includes(calc))) {
+    return 'MedicalWebPage';
+  } else if (educationCalculators.some(calc => path.includes(calc))) {
+    return 'EducationalOccupationalProgram';
+  } else if (financeCalculators.some(calc => path.includes(calc))) {
+    return 'FinancialProduct';
+  }
+
+  return 'WebApplication';
+};
+
+const CalculatorSchema: React.FC<{ seo: SEOProps }> = ({ seo }) => {
+  const calculatorType = getCalculatorType(seo.canonical);
+
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": calculatorType,
+    "name": seo.title,
+    "url": seo.canonical,
+    "applicationCategory": "Calculator",
+    "description": seo.description,
+    "publisher": {
+      "@type": "Organization",
+      "name": "QuicknCalc",
+      "url": "https://quickncalc.com"
+    }
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+    />
+  );
+};
+
 const FAQSchema: React.FC<{ faqs: FAQItem[] }> = ({ faqs }) => {
   const schemaData = {
     "@context": "https://schema.org",
@@ -88,7 +130,8 @@ const CalculatorLayout: React.FC<CalculatorLayoutProps> = ({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </Helmet>
-      
+
+      <CalculatorSchema seo={seo} />
       <FAQSchema faqs={faqs} />
 
       <div className="space-y-8 min-h-screen">

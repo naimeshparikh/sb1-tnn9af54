@@ -134,10 +134,12 @@ const ExamTimerTool: React.FC = () => {
   };
 
   const seo = {
-    title: 'Exam Timer - Test Timer Online with Countdown Clock',
-    description: 'Free online exam timer and test countdown clock for students. Set your test duration and get audio alerts at key intervals. Perfect study timer for online exams.',
-    keywords: 'exam timer, test timer online, countdown timer for exam, study timer, online exam stopwatch, test countdown clock',
-    canonical: 'https://quickncalc.com/exam-timer/',
+    title: "Exam Timer – Online Countdown Timer for Tests & Study Sessions",
+    description:
+      "Set up a countdown timer for your exams or study sessions. Free online test timer with alerts and sound notifications for better time management.",
+    keywords:
+      "exam timer, test countdown timer, online timer, study timer, quiz timer, timer for exam practice",
+    canonical: "https://quickncalc.com/exam-timer/",
   };
 
   const relatedTools = [

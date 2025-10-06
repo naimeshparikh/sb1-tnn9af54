@@ -58,12 +58,13 @@ const PercentageCalculator: React.FC = () => {
   }, [value1, value2]);
 
   const seo = {
-    title: 'Percentage Calculator - Calculate Percentage Increase, Decrease & More | QuicknCalc',
-    description: 'Free percentage calculator for all your percentage needs. Calculate percentage of a number, percentage increase, decrease, and percentage change with instant results.',
-    keywords: 'percentage calculator, percent calculator, percentage increase, percentage decrease, percentage change, percent of number, math calculator',
-    canonical: 'https://quickncalc.com/percentage/',
+    title: "Percentage Calculator – Find Percentage Increase, Decrease & Difference",
+    description:
+      "Quickly calculate percentage increase, decrease, or difference between two values. A simple online percentage calculator for math, finance, and exams.",
+    keywords:
+      "percentage calculator, percent increase calculator, percent decrease calculator, percentage difference, percent off calculator",
+    canonical: "https://quickncalc.com/percentage/",
   };
-
   const relatedTools = [
     { name: 'Grade Calculator', path: '/grade', description: 'Calculate final grades with weights' },
     { name: 'Discount Calculator', path: '/discount', description: 'Calculate discounts and savings' },

@@ -52,10 +52,12 @@ const MortgageCalculator: React.FC = () => {
   const totalMonths = parseFloat(loanTermYears || '0') * 12 + parseFloat(loanTermMonths || '0');
 
   const seo = {
-    title: 'Mortgage Calculator with Amortization Table - Calculate Home Loan Payments | QuicknCalc',
-    description: 'Calculate mortgage payments with detailed amortization schedule. Free mortgage calculator showing principal vs interest breakdown over time.',
-    keywords: 'mortgage calculator, home loan calculator, mortgage payment, amortization table, home buying calculator, refinance calculator',
-    canonical: 'https://quickncalc.com/mortgage/',
+    title: "Mortgage Calculator – Home Loan Payments & Interest Breakdown",
+    description:
+      "Plan your home loan better with this free mortgage calculator. Get EMI, interest breakdown, and total repayment instantly.",
+    keywords:
+      "mortgage calculator, home loan calculator, emi calculator, mortgage payment calculator, house loan calculator",
+    canonical: "https://quickncalc.com/mortgage/",
   };
 
   const relatedTools = [

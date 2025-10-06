@@ -51,10 +51,12 @@ const BmiCalculator: React.FC = () => {
   }, [weight, height, unit]);
 
   const seo = {
-    title: 'BMI Calculator - Calculate Body Mass Index | QuicknCalc',
-    description: 'Calculate your BMI (Body Mass Index) instantly. Free BMI calculator with metric and imperial units. Check if your weight is healthy for your height.',
-    keywords: 'BMI calculator, body mass index, BMI chart, healthy weight, weight calculator, obesity calculator',
-    canonical: 'https://quickncalc.com/bmi/',
+    title: "BMI Calculator – Calculate Your Body Mass Index",
+    description:
+      "Find your BMI instantly and know your ideal weight range. Free Body Mass Index calculator for men and women with BMI categories.",
+    keywords:
+      "BMI calculator, body mass index calculator, healthy weight calculator, BMI chart, ideal weight calculator",
+    canonical: "https://quickncalc.com/bmi/",
   };
 
   const relatedTools = [

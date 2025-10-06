@@ -41,10 +41,12 @@ const CompoundInterestCalculator: React.FC = () => {
   }[currency] || '$';
 
   const seo = {
-    title: 'Compound Interest Calculator with Interactive Growth Charts & Tables | QuicknCalc',
-    description: 'Calculate compound interest with detailed interactive growth visualization and year-by-year breakdown tables. See how your investments grow over time with comprehensive charts showing the power of compounding.',
-    keywords: 'compound interest calculator, compound growth, investment calculator, interest compounding, future value calculator, growth chart, compound interest table, investment visualization, compounding frequency',
-    canonical: 'https://quickncalc.com/compound-interest/',
+    title: "Compound Interest Calculator – Calculate Growth Over Time",
+    description:
+      "Use this free compound interest calculator to see how your money grows. Calculate total value, earned interest, and yearly projections.",
+    keywords:
+      "compound interest calculator, interest growth calculator, savings calculator, investment growth calculator, annual compound calculator",
+    canonical: "https://quickncalc.com/compound-interest/",
   };
 
   const relatedTools = [

@@ -98,12 +98,13 @@ const BodyFatCalculator: React.FC = () => {
   }, [gender, age, weight, height, neck, waist, hip, unit]);
 
   const seo = {
-    title: 'Body Fat Calculator - Estimate Body Fat Percentage | QuicknCalc',
-    description: 'Calculate your body fat percentage using the US Navy method. Free body fat calculator with detailed analysis and health categories.',
-    keywords: 'body fat calculator, body fat percentage, US Navy method, body composition, fitness calculator',
-    canonical: 'https://quickncalc.com/body-fat/',
+    title: "Body Fat Calculator – Estimate Body Fat % Using Measurements",
+    description:
+      "Estimate your body fat percentage using waist, neck, and height measurements. Free body fat calculator for men and women with health category results.",
+    keywords:
+      "body fat calculator, body fat percentage calculator, fat estimator, lean body mass calculator, fitness calculator",
+    canonical: "https://quickncalc.com/body-fat/",
   };
-
   const relatedTools = [
     { name: 'BMI Calculator', path: '/bmi', description: 'Calculate body mass index' },
     { name: 'Calorie Calculator', path: '/calorie', description: 'Calculate daily calorie needs' },

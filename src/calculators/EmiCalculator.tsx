@@ -46,12 +46,13 @@ const EmiCalculator: React.FC = () => {
   const totalMonths = parseFloat(tenureYears || '0') * 12 + parseFloat(tenureMonths || '0');
 
   const seo = {
-    title: 'EMI Calculator with Amortization Table & Charts - Calculate Loan EMI Online | QuicknCalc',
-    description: 'Calculate your loan EMI (Equated Monthly Installment) with detailed amortization schedule and interactive charts. Free EMI calculator for home loans, personal loans, car loans with year-by-year breakdown tables.',
-    keywords: 'EMI calculator, loan EMI, equated monthly installment, amortization table, EMI chart, home loan EMI, personal loan calculator, car loan EMI, mortgage calculator, loan amortization schedule',
-    canonical: 'https://quickncalc.com/emi/',
+    title: "EMI Calculator – Calculate Loan EMI, Interest & Monthly Payments",
+    description:
+      "Free EMI Calculator to estimate monthly payments for home, car, or personal loans. Get detailed loan interest, total repayment, and amortization chart instantly.",
+    keywords:
+      "EMI calculator, loan EMI calculator, monthly payment calculator, home loan calculator, car loan EMI, personal loan calculator, interest calculator",
+    canonical: "https://quickncalc.com/emi/",
   };
-
   const relatedTools = [
     { name: 'Mortgage Calculator', path: '/mortgage', description: 'Calculate mortgage payments and schedules' },
     { name: 'Loan Affordability Calculator', path: '/loan-affordability', description: 'Check how much you can borrow' },

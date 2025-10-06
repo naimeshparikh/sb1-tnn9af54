@@ -62,12 +62,13 @@ const CurrencyConverter: React.FC = () => {
   const toCurrencyInfo = currencies.find(c => c.code === toCurrency);
 
   const seo = {
-    title: 'Currency Converter - Convert Between World Currencies | QuicknCalc',
-    description: 'Free currency converter supporting major world currencies. Convert USD, EUR, GBP, JPY and more with real-time exchange rates.',
-    keywords: 'currency converter, exchange rate calculator, USD to EUR, currency exchange, foreign exchange calculator',
-    canonical: 'https://quickncalc.com/currency/',
+    title: "Currency Converter – Live Exchange Rate Calculator",
+    description:
+      "Convert between currencies instantly using live exchange rates. Free online currency converter for USD, EUR, GBP, INR, and more.",
+    keywords:
+      "currency converter, exchange rate calculator, forex calculator, usd to inr converter, euro to dollar converter",
+    canonical: "https://quickncalc.com/currency/",
   };
-
   const relatedTools = [
     { name: 'Discount Calculator', path: '/discount', description: 'Calculate discounts and savings' },
     { name: 'GST / VAT Calculator', path: '/gst-vat', description: 'Calculate tax amounts' },

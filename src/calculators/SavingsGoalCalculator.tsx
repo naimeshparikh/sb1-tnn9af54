@@ -67,10 +67,12 @@ const SavingsGoalCalculator: React.FC = () => {
   const yearsToGoal = (totalMonths / 12).toFixed(1);
 
   const seo = {
-    title: 'Savings Goal Calculator - Money Saving Goal & Target Calculator',
-    description: 'Plan how to save for your goals with this free savings target calculator. Calculate monthly contributions needed to reach your money saving goals with detailed projections.',
-    keywords: 'savings goal calculator, savings target calculator, money saving goal calculator, how to save for a goal, savings plan calculator',
-    canonical: 'https://quickncalc.com/savings-goal/',
+    title: "Savings Goal Calculator – Plan & Track Your Savings Target",
+    description:
+      "Figure out how much to save monthly to reach your goals. This savings goal calculator helps you plan for vacations, big purchases, and financial milestones.",
+    keywords:
+      "savings goal calculator, savings target calculator, money saving calculator, financial goal planner, saving plan calculator",
+    canonical: "https://quickncalc.com/savings-goal/",
   };
 
   const relatedTools = [
