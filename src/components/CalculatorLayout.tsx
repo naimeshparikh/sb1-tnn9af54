@@ -52,7 +52,7 @@ const getCalculatorType = (canonical: string): string => {
 const CalculatorSchema: React.FC<{ seo: SEOProps }> = ({ seo }) => {
   const calculatorType = getCalculatorType(seo.canonical);
 
-  const schemaData = {
+  const schemaData: any = {
     "@context": "https://schema.org",
     "@type": calculatorType,
     "name": seo.title,
@@ -65,6 +65,16 @@ const CalculatorSchema: React.FC<{ seo: SEOProps }> = ({ seo }) => {
       "url": "https://quickncalc.com"
     }
   };
+
+  if (calculatorType === 'WebApplication' || calculatorType === 'SoftwareApplication') {
+    schemaData.operatingSystem = "All";
+    schemaData.offers = {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    };
+  }
 
   return (
     <script
