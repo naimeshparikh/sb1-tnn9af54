@@ -1,8 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Calculator, DollarSign, PiggyBank, Heart, GraduationCap } from 'lucide-react';
 
 const Homepage: React.FC = () => {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "QuicknCalc",
+    "url": "https://quickncalc.com",
+    "logo": "https://quickncalc.com/logo.png",
+    "sameAs": [
+      "https://www.facebook.com/QuicknCalc",
+      "https://www.linkedin.com/company/QuicknCalc",
+      "https://twitter.com/QuicknCalc"
+    ]
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "QuicknCalc",
+    "url": "https://quickncalc.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://quickncalc.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
   const financeCalculators = [
     { name: 'Loan EMI Calculator', path: '/emi', description: 'Calculate monthly EMI for loans' },
     { name: 'GST / VAT Calculator', path: '/gst-vat', description: 'Calculate GST and VAT on purchases' },
@@ -37,15 +62,28 @@ const Homepage: React.FC = () => {
   ];
 
   return (
-    <div className="space-y-12">
-      {/* Hero Section */}
-      <div className="text-center space-y-4">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Welcome to QuicknCalc</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          QuicknCalc provides free, easy-to-use online calculators for finance, health, and education. 
-          Choose from the tools below:
-        </p>
-      </div>
+    <>
+      <Helmet>
+        <title>QuicknCalc - Free Online Calculator Tools for Finance, Health & Education</title>
+        <meta name="description" content="Free online calculators for finance, health, and education. Calculate EMI, BMI, GPA, compound interest, mortgage payments, and more with QuicknCalc." />
+        <link rel="canonical" href="https://quickncalc.com" />
+        <script type="application/ld+json">
+          {JSON.stringify(organizationSchema)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(websiteSchema)}
+        </script>
+      </Helmet>
+
+      <div className="space-y-12">
+        {/* Hero Section */}
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Welcome to QuicknCalc</h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            QuicknCalc provides free, easy-to-use online calculators for finance, health, and education.
+            Choose from the tools below:
+          </p>
+        </div>
 
       {/* Calculator Categories */}
       <div className="grid gap-12">
@@ -162,7 +200,8 @@ const Homepage: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 };
 
