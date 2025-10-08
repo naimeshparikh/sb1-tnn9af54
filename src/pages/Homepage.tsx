@@ -67,13 +67,16 @@ const Homepage: React.FC = () => {
         <title>QuicknCalc - Free Online Calculator Tools for Finance, Health & Education</title>
         <meta name="description" content="Free online calculators for finance, health, and education. Calculate EMI, BMI, GPA, compound interest, mortgage payments, and more with QuicknCalc." />
         <link rel="canonical" href="https://quickncalc.com" />
-        <script type="application/ld+json">
-          {JSON.stringify(organizationSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(websiteSchema)}
-        </script>
       </Helmet>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
 
       <div className="space-y-12">
         {/* Hero Section */}
