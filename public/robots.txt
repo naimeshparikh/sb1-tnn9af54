@@ -1,4 +1,37 @@
+# ====================================================
+# QuicknCalc Robots.txt
+# ====================================================
+# Purpose: Allow full crawl access, ensure sitemap discovery,
+# and improve indexing speed across search engines.
+# Last updated: 2025-10-15
+# ====================================================
+
 User-agent: *
 Allow: /
 
+# ====================================================
+# Sitemaps for major crawlers
+# ====================================================
 Sitemap: https://quickncalc.com/sitemap.xml
+
+# ====================================================
+# Crawl Guidance
+# ====================================================
+# - All pages are crawlable and indexable.
+# - No crawl-delay (Googlebot ignores this directive).
+# - Sitemap is automatically discovered and updated weekly.
+# - Internal links are properly canonicalized (HTTPS preferred).
+
+# ====================================================
+# Recommendations
+# ====================================================
+# ✔ Keep sitemap.xml updated when new calculators or tools are added.
+# ✔ Ensure all important calculators are interlinked for faster discovery.
+# ✔ Avoid duplicate query parameters in internal links.
+# ✔ Use <meta name="robots" content="index, follow"> on new tools.
+
+# ====================================================
+# Contact
+# ====================================================
+# Webmaster: https://quickncalc.com/contact/
+# ====================================================
